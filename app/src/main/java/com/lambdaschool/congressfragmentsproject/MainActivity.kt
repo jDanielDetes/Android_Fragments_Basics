@@ -3,12 +3,19 @@ package com.lambdaschool.congressfragmentsproject
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.ListFragment
 import com.lambdaschool.congressfragmentsproject.api.CongressDao
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonDetails
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CongresspersonOverviewFragment.OnListFragmentInteractionListener{
+    override fun onListFragmentInteraction(item: CongressDao?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    val fragment = CongresspersonDetails()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         // get congressperson portrait
         val image: Bitmap? = allMembers[0].id?.let { CongressDao.getImage(it) }
-
 
 
 
