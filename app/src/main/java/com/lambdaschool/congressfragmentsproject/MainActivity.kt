@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         // get congressperson portrait
         val image: Bitmap? = allMembers[0].id?.let { CongressDao.getImage(it) }
+
+
+
+
     }
     //
 }
