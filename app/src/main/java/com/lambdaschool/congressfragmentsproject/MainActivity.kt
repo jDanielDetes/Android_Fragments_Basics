@@ -3,12 +3,21 @@ package com.lambdaschool.congressfragmentsproject
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.ListFragment
+import com.lambdaschool.congressfragmentsproject.api.Committee
 import com.lambdaschool.congressfragmentsproject.api.CongressDao
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonDetails
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CongresspersonOverviewFragment.OnListFragmentInteractionListener{
+    override fun onListFragmentInteraction(item: CongressDao?) {
+
+
+
+
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,5 +31,18 @@ class MainActivity : AppCompatActivity() {
 
         // get congressperson portrait
         val image: Bitmap? = allMembers[0].id?.let { CongressDao.getImage(it) }
+        val fragment = DetailsFragment()
+
+        val bundle = Bundle()
+        bundle.getSerializable(CongressDao.CONGRESS_NUMBER)
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_holder_one,fragment)
+            .commit()
+
+
     }
+
+    //
 }
+
